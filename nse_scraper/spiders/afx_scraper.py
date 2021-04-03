@@ -32,19 +32,18 @@ class AfxScraperSpider(scrapy.Spider):
             # print(clean_price)
             return clean_price
 
-        cn = [clean_stock_name(r_name) for r_name in raw_stock_name]
-        print(len(cn))
-        cs = [clean_stock_price(r_price) for r_price in raw_stock_price]
-        print(len(cs))
-
+        stock_name = [clean_stock_name(r_name) for r_name in raw_stock_name]
+        stock_price = [clean_stock_price(r_price) for r_price in raw_stock_price]
+        stock_symbol = [clean_stock_name(r_symbol) for r_symbol in raw_ticker_symbol]
         # using list slicing to remove the unnecessary data
-        cleaned_data = zip(cn, cs,stock_change)
-        zl = list(cleaned_data)
-        print(zl)
+        stock_symbol = stock_symbol[6:]
+        print(stock_symbol)
+        cleaned_data = zip(stock_symbol, stock_name, stock_price)
         for item in cleaned_data:
             scraped_data = {
-                'name': item[0],
-                'price': item[1],
+                'ticker': item[0],
+                'name': item[1],
+                'price': item[2],
             }
             # yield info to scrapy
             yield scraped_data
