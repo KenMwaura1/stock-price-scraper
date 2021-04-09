@@ -3,10 +3,12 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+
+from scrapy.item import Item, Field
 
 
-class NseScraperItem(scrapy.Item):
+class NseScraperItem(Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    stock_name = Field()
+    stock_price = Field()
+    stock_symbol = Field()

@@ -6,6 +6,7 @@ cffi==1.14.5
 constantly==15.1.0
 cryptography==3.4.7
 cssselect==1.1.0
+greenlet==1.0.0
 hyperlink==21.0.0
 idna==3.1
 incremental==21.3.0
@@ -25,6 +26,7 @@ Scrapy==2.4.1
 service-identity==18.1.0
 six==1.15.0
 soupsieve==2.2.1
+SQLAlchemy==1.4.5
 Twisted==21.2.0
 w3lib==1.22.0
 zope.interface==5.3.0
