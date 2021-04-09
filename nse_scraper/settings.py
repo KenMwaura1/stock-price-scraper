@@ -12,12 +12,26 @@ BOT_NAME = 'nse_scraper'
 SPIDER_MODULES = ['nse_scraper.spiders']
 NEWSPIDER_MODULE = 'nse_scraper.spiders'
 
+# POSTGRES SETTINGS
+DATABASE = {
+    "drivername": "postgres",
+    "host": os.environ["POSTGRES_HOST"],
+    "port": os.environ["POSTGRES_PORT"],
+    "username": os.environ["POSTGRES_USER"],
+    "password": os.environ["POSTGRES_PASS"],
+    "database": os.environ["POSTGRES_DB"],
+}
+# Configure item pipelines
+# See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+ITEM_PIPELINES = {
+  'nse_scraper.pipelines.NseScraperPipeline': 300,
+}
 
-# Crawl responsibly by identifying yourself (and your website) on the user-agent
+# Crawl respon5sibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'nse_scraper (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -60,11 +74,6 @@ ROBOTSTXT_OBEY = True
 #    'scrapy.extensions.telnet.TelnetConsole': None,
 #}
 
-# Configure item pipelines
-# See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'nse_scraper.pipelines.NseScraperPipeline': 300,
-#}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
