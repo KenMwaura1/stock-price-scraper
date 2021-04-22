@@ -26,13 +26,16 @@ class NseScraperPipeline:
         process item and store to database
         """
         session = self.Session()
-        instance = session.query(StockData).filter_by(**item).on_or_one()
-        if instance:
-            return instance
-        stock_data = StockData(**item)
+        stock_data = StockData()
+        stock_data.stock_name = item["name"]
+        stock_data.stock_price = float(item["price"].replace(',', ''))
+        stock_data.stock_ticker = item["ticker"]
         try:
             session.add(stock_data)
             session.commit()
+            # query again
+            obj = session.query(StockData).first()
+            print(obj.stock_ticker)
         except Exception as e:
             session.rollback()
             print(f"we have a problem, houston {e}")

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, create_engine
+from sqlalchemy import Column, Float, Integer, String, create_engine
 from sqlalchemy.engine.base import Engine
 from scrapy.utils.project import get_project_settings
 from sqlalchemy.ext.declarative import declarative_base
@@ -33,4 +33,4 @@ class StockData(Base):
     id = Column("id", Integer, primary_key=True, autoincrement=True)
     stock_ticker = Column("stock_ticker", String)
     stock_name = Column("stock_name", String)
-    stock_price = Column("stock_price", Integer)
+    stock_price = Column("stock_price", Float)

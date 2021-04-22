@@ -17,10 +17,10 @@ NEWSPIDER_MODULE = 'nse_scraper.spiders'
 
 # POSTGRES SETTINGS
 host = os.getenv("POSTGRES_HOST")
-port = 5432
+port = os.getenv("POSTGRES_PORT")
 username = os.getenv("POSTGRES_USER")
 password = os.getenv("POSTGRES_PASS")
-database = os.getenv("POSTGRES_DB")
+database = os.getenv("POSTGRESS_DB")
 drivername = "postgresql"
 DATABASE = f"{drivername}://{username}:{password}@{host}:{port}/{database}"
 
