@@ -1,3 +1,5 @@
+from typing import List, Any
+
 from nse_scraper.models import StockData, db_connect
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import desc
@@ -41,8 +43,8 @@ def stock_notification(stock_data: list, number: int):
         print(f" Houston we have a problem: {e}")
 
 
-message = [stock_query()["stock_ticker"], stock_query()["stock_price"]]
-if stock_query().get("stock_price") >= 38.:
+message: list[Any] = [stock_query()["stock_ticker"], stock_query()["stock_price"]]
+if stock_query().get("stock_price") >= 38:
     # Call the function passing the message  and mobile_number as a arguments
     print(message)
-    stock_notification(str(message), mobile_number)
+    # stock_notification(str(message), mobile_number)
