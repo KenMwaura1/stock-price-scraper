@@ -20,7 +20,7 @@ host = os.getenv("POSTGRES_HOST")
 port = os.getenv("POSTGRES_PORT")
 username = os.getenv("POSTGRES_USER")
 password = os.getenv("POSTGRES_PASS")
-database = os.getenv("POSTGRESS_DB")
+database = os.getenv("POSTGRES_DB")
 drivername = "postgresql"
 DATABASE = f"{drivername}://{username}:{password}@{host}:{port}/{database}"
 
