@@ -24,7 +24,7 @@ ticker_data = []
 
 def stock_query():
     sq = session.query(StockData.id, StockData.stock_ticker,
-                       StockData.stock_price).filter(StockData.stock_ticker == "SCOM")
+                       StockData.stock_price).filter(StockData.stock_ticker == "KCB")
 
     for id, ticker, price in sq.order_by(desc(StockData.id)).limit(1):
         print(id, ticker, price)
