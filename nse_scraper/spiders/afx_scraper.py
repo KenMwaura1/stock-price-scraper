@@ -12,9 +12,10 @@ class AfxScraperSpider(scrapy.Spider):
         # Extract data using css selectors
         row = response.css('table tbody tr ')
         # use XPath and regular expressions to extract stock name and price
-        raw_stock_price = row.xpath('td[4]').re('[0-9].*')
-        raw_stock_name = row.xpath('td[2]').re('[A-Z].*')
         raw_ticker_symbol = row.xpath('td[1]').re('[A-Z].*')
+        raw_stock_name = row.xpath('td[2]').re('[A-Z].*')
+        raw_stock_price = row.xpath('td[4]').re('[0-9].*')
+
         # create a function to remove html tags from the returned list
         print(raw_ticker_symbol)
 
