@@ -16,20 +16,16 @@ class AfxScraperSpider(scrapy.Spider):
         raw_stock_name = row.xpath('td[2]').re('[A-Z].*')
         raw_stock_price = row.xpath('td[4]').re('[0-9].*')
 
-        # create a function to remove html tags from the returned list
         print(raw_ticker_symbol)
 
+        # create a function to remove html tags from the returned list
         def clean_stock_name(raw_name):
             clean_name = BeautifulSoup(raw_name, "lxml").text
             clean_name = clean_name.split('>')
-            # cleaned_data.append(clean_name[1])
-            # print(clean_name)
             return clean_name[1]
 
         def clean_stock_price(raw_price):
-            clean_price = BeautifulSoup(raw_price, "lxml").text
-            # cleaned_data.append(clean_price)
-            # print(clean_price)
+            clean_price = BeautifulSoup(raw_price, "lxml").texte)
             return clean_price
 
         stock_name = [clean_stock_name(r_name) for r_name in raw_stock_name]
