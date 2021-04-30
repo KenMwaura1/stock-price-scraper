@@ -3,8 +3,6 @@ from sqlalchemy.engine.base import Engine
 from scrapy.utils.project import get_project_settings
 from sqlalchemy.ext.declarative import declarative_base
 
-from nse_scraper import settings
-
 Base = declarative_base()
 
 

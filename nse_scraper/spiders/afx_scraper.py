@@ -16,7 +16,7 @@ class AfxScraperSpider(scrapy.Spider):
         raw_stock_name = row.xpath('td[2]').re('[A-Z].*')
         raw_stock_price = row.xpath('td[4]').re('[0-9].*')
 
-        print(raw_ticker_symbol)
+        # print(raw_ticker_symbol)
 
         # create a function to remove html tags from the returned list
         def clean_stock_name(raw_name):
