@@ -5,6 +5,9 @@
 Web scraper utilizing scrapy to scrape live stock prices from the Nairobi Stock Exchange. 
 The prices are then saved in Postgres Database after each scrape, we use sqlalchemy as ORM 
 and psycopg2 as database connector. 
+
+The accompanying article can be found [here](https://dev.to/ken_mwaura1/daily-share-price-notifications-using-python-sql-and-africas-talking-part-one-17p)
+
 The actual platform we are scraping is [afx](https://afx.kwayisi.org/nseke/) website. 
 ## Getting Started 
 ### Prerequisites
