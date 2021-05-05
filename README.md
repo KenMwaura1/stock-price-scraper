@@ -51,10 +51,33 @@ Install the required dependencies:
 
 `pip install -r requirements `
 
+## Step 4 
+Change into the nse_scraper folder and create an environment file. 
+```shell
+cd nse_scraper
+touch .env 
+```
+Add your credentials as specified in the example file.
+
+OR
+
+Copy the provided  example and edit as required:
+
+` cp .env-example env`
+
+## Step 5
+Navigate up to the main folder *stock-price-scraper*
+Run the scraper and check the logs for any errors . 
+```shell
+cd .. 
+scrapy crawl afx_scraper
+```
+or 
+Run the scraper and have it output to a json file to preview. 
+```shell
+scrapy crawl afx_scraper -o test.json 
+```
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-OR
-
-Download the zip and extract it. 
 
