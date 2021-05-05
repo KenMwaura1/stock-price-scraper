@@ -29,8 +29,27 @@ Clone this repo
 Change into the directory
 
 `cd stock-price-scraper`
+## Step 2
+Create a virtual environment (venv) to hold all of the required dependecies.Here we use
+the built-in venv module.
+
+`python -m venv env`
+
+Activate the virtual environment
+
+` source env/bin/activate`
+
+Alternatively if you are using [pyenv](https://github.com/pyenv/pyenv).
 
 
+```shell 
+pyenv virtualenv daily-news-scraper
+pyenv activate daily-news-scraper
+   ```
+## Step 3
+Install the required dependencies:
+
+`pip install -r requirements `
 
 ## License
 
