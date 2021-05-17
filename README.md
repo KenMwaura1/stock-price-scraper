@@ -44,8 +44,8 @@ Alternatively if you are using [pyenv](https://github.com/pyenv/pyenv).
 
 
 ```shell 
-pyenv virtualenv daily-news-scraper
-pyenv activate daily-news-scraper
+pyenv virtualenv nse_scraper
+pyenv activate nse_scraper
    ```
 ## Step 3
 Install the required dependencies:
