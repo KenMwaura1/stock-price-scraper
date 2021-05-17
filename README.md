@@ -18,6 +18,8 @@ The actual platform we are scraping is [afx](https://afx.kwayisi.org/nseke/) web
 - Postgresql Database.
     - This could either be installed locally or via  [docker](https://www.docker.com/).
       This [article](https://blog.crunchydata.com/blog/easy-postgresql-12-and-pgadmin-4-setup-with-docker) is an awesome resource on how to get Postgresql and pgadmin4  installed as containers.
+      
+    Create a database `nse_scraper `. Either using SQL or 3-party client like pgadmin4 or [dbeaver](https://dbeaver.io/)
 
 ## Installation
 
@@ -31,7 +33,7 @@ Change into the directory
 
 `cd stock-price-scraper`
 ## Step 2
-Create a virtual environment (venv) to hold all of the required dependecies.Here we use
+Create a virtual environment (venv) to hold all the required dependencies.Here we use
 the built-in venv module.
 
 `python -m venv env`
@@ -44,8 +46,8 @@ Alternatively if you are using [pyenv](https://github.com/pyenv/pyenv).
 
 
 ```shell 
-pyenv virtualenv daily-news-scraper
-pyenv activate daily-news-scraper
+pyenv virtualenv nse_scraper
+pyenv activate nse_scraper
    ```
 ## Step 3
 Install the required dependencies:
