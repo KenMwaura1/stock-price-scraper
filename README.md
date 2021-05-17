@@ -19,7 +19,7 @@ The actual platform we are scraping is [afx](https://afx.kwayisi.org/nseke/) web
     - This could either be installed locally or via  [docker](https://www.docker.com/).
       This [article](https://blog.crunchydata.com/blog/easy-postgresql-12-and-pgadmin-4-setup-with-docker) is an awesome resource on how to get Postgresql and pgadmin4  installed as containers.
       
-    Create a 
+    Create a database `nse_scraper `. Either using SQL or 3-party client like pgadmin4 or [dbeaver](https://dbeaver.io/)
 
 ## Installation
 
