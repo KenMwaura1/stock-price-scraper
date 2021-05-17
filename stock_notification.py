@@ -11,6 +11,7 @@ load_dotenv('/nse_scraper/')
 at_username = os.getenv("at_username")
 at_api_key = os.getenv("at_api_key")
 mobile_number = os.getenv("mobile_number")
+print(at_username, at_api_key)
 at.initialize(at_username, at_api_key)
 sms = at.SMS
 
