@@ -20,7 +20,6 @@ class NseScraperPipeline:
         create_items_table(engine)
         self.Session = sessionmaker(bind=engine)
 
-
     def process_item(self, item, spider):
         """
         process item and store to database
