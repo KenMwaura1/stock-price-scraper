@@ -16,7 +16,7 @@ SPIDER_MODULES = ['nse_scraper.spiders']
 NEWSPIDER_MODULE = 'nse_scraper.spiders'
 
 # POSTGRES SETTINGS
-host = getenv("POSTGRES_HOST")
+host = os.getenv("POSTGRES_HOST")
 port = os.getenv("POSTGRES_PORT")
 username = os.getenv("POSTGRES_USER")
 password = os.getenv("POSTGRES_PASS")
