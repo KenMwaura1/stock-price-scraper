@@ -22,6 +22,7 @@ ticker_data = []
 
 
 # TODO: Add a function to notify client once the price changes
+# Create a function to query the Database for latest stock data
 def stock_query():
     sq = session.query(StockData.id, StockData.stock_ticker, StockData.stock_name,
                        StockData.stock_price).filter(StockData.stock_ticker == "SCOM")
@@ -44,7 +45,7 @@ def stock_notification(stock_data: list, number: int):
 
 message: list[Any] = [f'{stock_query()["stock_name"]}, is now Kes {stock_query()["stock_price"]} per share']
 # check if Safaricom share price is more than Kes 39 and send a notification.
-if stock_query().get("stock_price") >= 38:
+if stock_query().get("stock_price") >= 39:
     # Call the function passing the message  and mobile_number as a arguments
     print(message)
     stock_notification(str(message), mobile_number)
