@@ -11,7 +11,8 @@ load_dotenv()
 at_username = os.getenv("at_username")
 at_api_key = os.getenv("at_api_key")
 mobile_number = os.getenv("mobile_number")
-print(at_username, at_api_key)
+# print(at_username, at_api_key)
+# Initialize the Africas sdk py passing the api key and username from the .env file
 at.initialize(at_username, at_api_key)
 sms = at.SMS
 account = at.Application
@@ -24,12 +25,12 @@ ticker_data = []
 
 # TODO: Add a function to notify client once the price changes
 def stock_query():
-    sq = session.query(StockData.id, StockData.stock_ticker,
+    sq = session.query(StockData.id, StockData.stock_ticker, StockData.stock_name,
                        StockData.stock_price).filter(StockData.stock_ticker == "SCOM")
 
-    for id, ticker, price in sq.order_by(desc(StockData.id)).limit(1):
-        print(id, ticker, price)
-        new_data = {'stock_id': id, 'stock_ticker': ticker, 'stock_price': price}
+    for id, ticker, name, price in sq.order_by(desc(StockData.id)).limit(1):
+        # print(id, name, ticker, price)
+        new_data = {'stock_id': id, 'stock_name': name, 'stock_ticker': ticker, 'stock_price': price}
         return new_data
 
 
@@ -43,7 +44,7 @@ def stock_notification(stock_data: list, number: int):
         print(f" Houston we have a problem: {e}")
 
 
-message: list[Any] = [f'{stock_query()["stock_ticker"]}, is now Kes {stock_query()["stock_price"]} per share']
+message: list[Any] = [f'{stock_query()["stock_name"]}, is now Kes {stock_query()["stock_price"]} per share']
 # check if Safaricom share price is more than Kes 39 and send a notification.
 if stock_query().get("stock_price") >= 38:
     # Call the function passing the message  and mobile_number as a arguments
