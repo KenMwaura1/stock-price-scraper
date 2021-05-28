@@ -5,12 +5,10 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import desc
 import africastalking as at
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
-at_username = os.getenv("at_username")
-at_api_key = os.getenv("at_api_key")
-mobile_number = os.getenv("mobile_number")
+at_username = os.environ.get("at_username")
+at_api_key = os.environ.get("at_api_key")
+mobile_number = os.environ.get("mobile_number")
 # print(at_username, at_api_key)
 # Initialize the Africas sdk py passing the api key and username from the .env file
 at.initialize(at_username, at_api_key)

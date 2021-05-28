@@ -7,20 +7,18 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
 BOT_NAME = 'nse_scraper'
 
 SPIDER_MODULES = ['nse_scraper.spiders']
 NEWSPIDER_MODULE = 'nse_scraper.spiders'
 
 # POSTGRES SETTINGS
-host = os.e("POSTGRES_HOST")
-port = os.getenv("POSTGRES_PORT")
-username = os.getenv("POSTGRES_USER")
-password = os.getenv("POSTGRES_PASS")
-database = os.getenv("POSTGRES_DB")
+host = os.environ.get("POSTGRES_HOST")
+port = os.environ.get("POSTGRES_PORT")
+username = os.environ.get("POSTGRES_USER")
+password = os.environ.get("POSTGRES_PASS")
+database = os.environ.get("POSTGRES_DB")
 drivername = "postgresql"
 DATABASE = f"{drivername}://{username}:{password}@{host}:{port}/{database}"
 
