@@ -14,6 +14,7 @@ mobile_number = os.getenv("mobile_number")
 print(at_username, at_api_key)
 at.initialize(at_username, at_api_key)
 sms = at.SMS
+account = at.Application
 
 engine = db_connect()
 Session = sessionmaker(bind=engine)
@@ -22,7 +23,6 @@ ticker_data = []
 
 
 # TODO: Add a function to notify client once the price changes
-
 def stock_query():
     sq = session.query(StockData.id, StockData.stock_ticker,
                        StockData.stock_price).filter(StockData.stock_ticker == "SCOM")
@@ -34,17 +34,17 @@ def stock_query():
 
 
 # Create a function to send a message containing the stock ticker and price
-
-
 def stock_notification(stock_data: list, number: int):
     try:
         response = sms.send(stock_data, [number])
+        print(account.fetch_application_data())
         print(response)
     except Exception as e:
         print(f" Houston we have a problem: {e}")
 
 
-message: list[Any] = [f'{stock_query()["stock_name"]}, is now Kes {stock_query()["stock_price"]} per share']
+message: list[Any] = [f'{stock_query()["stock_ticker"]}, is now Kes {stock_query()["stock_price"]} per share']
+# check if Safaricom share price is more than Kes 39 and send a notification.
 if stock_query().get("stock_price") >= 38:
     # Call the function passing the message  and mobile_number as a arguments
     print(message)
