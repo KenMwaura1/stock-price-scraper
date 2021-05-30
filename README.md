@@ -88,11 +88,36 @@ Installing Heroku CLI After your account registration, let’s use Heroku CLI to
 # for arch-linux
 sudo pacman -S heroku 
 ```
-Login To log in using Heroku’s CLI, simply cd to your project folder and run heroku login.
+To log in using Heroku’s CLI, simply cd to your project folder and run `heroku login`.
+```shell
+$ cd nse_scraper 
+
+$ heroku login 
+
+heroku: Press any key to open up the browser to login or q to exit:
+Opening browser to https://cli-auth.heroku.com/auth/cli/browser/xxxx-xxxx-xxxx-xxxx-xxxx?requestor=xxxx.xxxx.xxxxLogging in... done
+Logged in as &*^@gmail.com
+
+...
+```
+### Git 
 Checkout the `heroku_deployment` branch.
 ```shell
 git checkout heroku_deployment
 ```
+At this stage, you should already have set up your project with git init and git commit etc. The next steps are to turn your project into a git repository and push it to Heroku.
+```shell
+# i. To create a Heroku application:
+$ heroku apps:create daily-nse-scrape
+
+# ii. Add a remote to your local repository:
+$ heroku git:remote -a daily-nse-scraper
+
+# iii. Deploy your code
+$ git push heroku heroku_deployment:main
+```
+Tweak the project name as necessary. 
+
 
 ## License
 
