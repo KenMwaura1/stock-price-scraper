@@ -138,7 +138,39 @@ DATABASE_CONNECTION_STRING = ‘postgres://xxxx:xxxx@ec2-xx-xxx-xxx-xx.compute-1
 ```
 Ensure you add your configuration variables in ‘Settings’ → ‘Reveal Config Vars‘. This will allow Heroku to get and set the required environment configuration for our web scraper to run.
 
+### Heroku Scheduler
+This section of the article shows you how you can run your crawlers/spiders periodically.
+Though Heroku offers several different schedulers that could run your application periodically, I personally prefer ‘Heroku Scheduler’ as it has a free tier and it is super simple to use.
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fztjh37dw18ksdisaryu.png)
 
+To use the free tier of this add-on, Heroku requires you to add a payment method to your account.
+1. Configuration
+   Inside your newly added ‘Heroku Scheduler’ add-on, simply select ‘Add Job’ on the top right corner and you should see the screen as shown in the picture beside.
+
+To run the`scrapy crawl afx_scraper` command periodically, simply select a time interval and save job.
+2. How do I schedule a daily job?
+   Simply configure our ‘Heroku Scheduler’ to run our python script every day at a specified time. In our case its every hour at 10 minutes. Then it should run our command.
+```python
+scrapy crawl afx_scraper
+```
+### Scheduling Text Notifications
+Now we need add a scheduler for Heroku to run our notifiction script which will inturn send us texts. Since we already have an instance of Heroku running in our app we need an alternative. Advanced scheduler is a good option as it offers a free trial and if need be a $5 per month for an upgrade.
+1. Setup
+   Inside our daily-nse-scraper app, search for the advanced scheduler addon. Select the trail-free plan and submit order form.
+   ![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/a78isp7oujzanegy19tg.png)
+
+2. Configuration
+
+Click on the Advanced Scheduler addon. Inside the overview page. Click on Create trigger button. The free trial allows up-to 3 triggers.
+We'll set a trigger for 11.00 am each day, specify the command `python nse_scraper/stock_notification.py` to run. Remember to select the correct timezone in my case its Africa/Nairobi and save the changes.
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4833vqsyllt8d4humosk.png)
+3. Testing
+   To ensure the scheduler will execute as expected. We can manually run the trigger: on the overview page, click on the more button and select execute trigger.
+   ![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/uby5ur444r3hsuozzn0s.png)
+
+You should now have received a notification text if everything went as expected.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3xhb989mxodgeiqqu7ur.jpg)
 
 ## License
 
