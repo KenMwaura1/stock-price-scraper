@@ -81,6 +81,19 @@ Run the scraper and have it output to a json file to preview.
 ```shell
 scrapy crawl afx_scraper -o test.json 
 ```
+## Step 6 - Deployment
+Heroku account registration First and foremost, you would need to register an account with Heroku, it’s free!
+Installing Heroku CLI After your account registration, let’s use Heroku CLI to create and manage our project. You may check out the installation steps for other OS here.
+```shell
+# for arch-linux
+sudo pacman -S heroku 
+```
+Login To log in using Heroku’s CLI, simply cd to your project folder and run heroku login.
+Checkout the `heroku_deployment` branch.
+```shell
+git checkout heroku_deployment
+```
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
