@@ -117,6 +117,27 @@ $ heroku git:remote -a daily-nse-scraper
 $ git push heroku heroku_deployment:main
 ```
 Tweak the project name as necessary. 
+### Setup free tier managed PostgreSQL service on Heroku
+This step is fairly simple, simply go to the ‘Resources’ tab on your Heroku dashboard and look for ‘Heroku Postgres’, select the free tier (or whichever you deem fit).
+Finally, adjust your Scrapy project’s connection to your database accordingly.
+
+```shell
+# settings.py
+
+# POSTGRES SETTINGS
+host = os.environ.get("POSTGRES_HOST")
+port = os.environ.get("POSTGRES_PORT")
+username = os.environ.get("POSTGRES_USER")
+password = os.environ.get("POSTGRES_PASS")
+database = os.environ.get("POSTGRES_DB")
+drivername = "postgresql"
+DATABASE = f"{drivername}://{username}:{password}@{host}:{port}/{database}"
+
+# Or alternatively:
+DATABASE_CONNECTION_STRING = ‘postgres://xxxx:xxxx@ec2-xx-xxx-xxx-xx.compute-1.amazonaws.com:5432/xxxxxx
+```
+Ensure you add your configuration variables in ‘Settings’ → ‘Reveal Config Vars‘. This will allow Heroku to get and set the required environment configuration for our web scraper to run.
+
 
 
 ## License
