@@ -28,7 +28,7 @@ Clone this repo
 ```bash 
   git clone https://github.com/KenMwaura1/stock-price-scraper
 ```
-## Step One
+## Step 1
 Change into the directory
 
 `cd stock-price-scraper`
