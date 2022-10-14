@@ -24,7 +24,7 @@ The actual platform we are scraping is [afx](https://afx.kwayisi.org/nseke/) web
 
 ### Prerequisites
 
-- Python and pip (I am currently using 3.9.2) Any version above 3.5 should work.
+- Python and pip (I am currently using 3.9.2) Any version above 3.7 should work.
 - An [Africas Talking account](https://account.africastalking.com/auth/register/).
   - Api Key and username from your account. Create an app and take note of the api key.
 - Postgresql Database.
