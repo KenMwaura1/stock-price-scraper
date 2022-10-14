@@ -10,7 +10,7 @@ constantly==15.1.0
 contextlib2==0.6.0.post1
 cryptography==3.4.7
 cssselect==1.1.0
-greenlet==1.0.0
+# greenlet==1.0.0
 hyperlink==21.0.0
 idna==2.10
 incremental==21.3.0
