@@ -1,13 +1,20 @@
-import scrapy
+from scrapy.spiders import CrawlSpider, Request
 from bs4 import BeautifulSoup
+from scrapy.spiders import Rule
+# from scrapy.linkextractors import LinkExtractor
 
 
-class AfxScraperSpider(scrapy.Spider):
+class AfxScraperSpider(CrawlSpider):
     name = 'afx_scraper'
-    allowed_domains = ['https://afx.kwayisi.org']
-    start_urls = ['https://afx.kwayisi.org/nseke//']
+    allowed_domains = ['afx.kwayisi.org']
+    start_urls = ['https://afx.kwayisi.org/nse/']
 
-    def parse(self, response):
+    rules = (
+        # Rule(LinkExtractor(allow='s?k=laptop&page=', restrict_css="a.s-pagination-next")),
+        Rule(callback='parse_item'),
+    )
+
+    def parse_item(self, response, **kwargs):
         print("Processing: " + response.url)
         # Extract data using css selectors
         row = response.css('table tbody tr ')
@@ -22,11 +29,12 @@ class AfxScraperSpider(scrapy.Spider):
         def clean_stock_name(raw_name):
             clean_name = BeautifulSoup(raw_name, "lxml").text
             clean_name = clean_name.split('>')
-            return clean_name[1]
+            return clean_name[0]
 
         def clean_stock_price(raw_price):
             clean_price = BeautifulSoup(raw_price, "lxml").text
             return clean_price
+
         # Use list comprehension to unpack required values
         stock_name = [clean_stock_name(r_name) for r_name in raw_stock_name]
         stock_price = [clean_stock_price(r_price) for r_price in raw_stock_price]
